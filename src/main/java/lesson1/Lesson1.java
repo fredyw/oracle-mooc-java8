@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 /**
  * @author Speakjava (simon.ritter@oracle.com)
@@ -49,6 +50,10 @@ public class Lesson1 {
         "alpha", "bravo", "charlie", "delta", "echo", "foxtrot");
 
     /* YOUR CODE HERE */
+    String str = list.stream()
+      .map(s -> Character.toString(s.charAt(0)))
+      .collect(Collectors.joining());
+    System.out.println(str);
   }
 
   /**
@@ -61,6 +66,8 @@ public class Lesson1 {
         "alpha", "bravo", "charlie", "delta", "echo", "foxtrot"));
 
     /* YOUR CODE HERE */
+    list.removeIf(s -> s.length() % 2 != 0);
+    System.out.println(list);
   }
 
   /**
@@ -73,6 +80,8 @@ public class Lesson1 {
         "alpha", "bravo", "charlie", "delta", "echo", "foxtrot"));
 
     /* YOUR CODE HERE */
+    list.replaceAll(String::toUpperCase);
+    System.out.println(list);
   }
 
   /**
@@ -88,6 +97,10 @@ public class Lesson1 {
     map.put("a", 1);
 
     /* YOUR CODE HERE */
+    String str = map.entrySet().stream()
+      .map(e -> e.getKey() + e.getValue())
+      .collect(Collectors.joining());
+    System.out.println(str);
   }
 
   /**
@@ -99,6 +112,15 @@ public class Lesson1 {
     List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
     /* YOUR CODE HERE */
+    Thread thread = new Thread(() -> {
+      list.forEach(System.out::println);
+    });
+    thread.start();
+    try {
+        thread.join();
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
   }
 
   /**

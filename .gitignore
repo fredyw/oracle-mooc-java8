@@ -2,3 +2,7 @@ bin/
 build/
 ~*
 *.swp
+.classpath
+.gradle/
+.project
+.settings/
