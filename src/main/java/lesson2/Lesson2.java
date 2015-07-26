@@ -53,8 +53,12 @@ public class Lesson2 {
   private void exercise1() {
     List<String> list = Arrays.asList(
         "The", "Quick", "BROWN", "Fox", "Jumped", "Over", "The", "LAZY", "DOG");
-
+    
     /* YOUR CODE HERE */
+    list.stream()
+      .map(String::toLowerCase)
+      .collect(Collectors.toList())
+      .forEach(System.out::println);
   }
 
   /**
@@ -68,6 +72,10 @@ public class Lesson2 {
         "The", "Quick", "BROWN", "Fox", "Jumped", "Over", "The", "LAZY", "DOG");
 
     /* YOUR CODE HERE */
+    list.stream()
+      .filter(s -> s.length() % 2 != 0)
+      .collect(Collectors.toList())
+      .forEach(System.out::println);;
   }
 
   /**
