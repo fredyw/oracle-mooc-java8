@@ -77,10 +77,10 @@ public class Lesson3 {
     iter1.forEach(i -> {
       Stream<Integer> iter2 = Stream.iterate(0, idx -> idx + 1).limit(LIST_SIZE);
       if (parallel) {
-          iter2 = iter2.parallel();
+        iter2 = iter2.parallel();
       }
       iter2.forEach(j -> {
-          distances[i][j] = Levenshtein.lev(wordList.get(i), wordList.get(j));
+        distances[i][j] = Levenshtein.lev(wordList.get(i), wordList.get(j));
       }); 
     });
     
@@ -98,7 +98,7 @@ public class Lesson3 {
     // YOUR CODE HERE
     Stream<String> stream = wordList.stream();
     if (parallel) {
-        stream = stream.parallel();
+      stream = stream.parallel();
     }
     return stream.sorted().map(String::toUpperCase).filter(s -> s.startsWith("A"))
       .distinct().collect(Collectors.toList());
